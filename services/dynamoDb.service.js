@@ -17,6 +17,7 @@ class DynamoDbDataServices {
       aws.config.update(dynamodbParams);
 
     }
+
     /**
       Retreive all the movie details from database
     */
@@ -37,6 +38,20 @@ class DynamoDbDataServices {
             resolve(data.Items);
           }
         });
+      });
+    }
+
+    /**
+    * This method to add item to DynamoDB table
+    */
+    add(){
+      return new Promise((resolve, reject) =>{
+        const result = [{
+          message: "My message for adding"
+        },{
+          message: "My second message foe adding"
+        }];
+        resolve(result);
       });
     }
 }

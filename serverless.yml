@@ -60,6 +60,11 @@ functions:
     handler: blog.fetch
     events:
       - http: get blog/fetch
+  blogsadd:
+    handler: blog.add
+    events:
+      - http: post blog/add
+
 resources:
   Resources:
     Movies:
