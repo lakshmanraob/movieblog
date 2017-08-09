@@ -44,14 +44,30 @@ class DynamoDbDataServices {
     /**
     * This method to add item to DynamoDB table
     */
-    add(){
+    add(jsonVal){
       return new Promise((resolve, reject) =>{
-        const result = [{
-          message: "My message for adding"
-        },{
-          message: "My second message foe adding"
-        }];
-        resolve(result);
+        let docClient = new aws.DynamoDB.DocumentClient();
+
+        const params = {
+          TableName: this.tableName,
+          Item: {
+            "mYear": 2017,
+            "mTitle": "simnple movie"
+          }
+        }
+        docClient.put(params,(err,data) => {
+          if (err) {
+            reject(err);
+          } else {
+            resolve(data.items);
+          }
+        });
+        // const result = [{
+        //   message: "My message for adding"
+        // },{
+        //   message: "My second message foe adding"
+        // }];
+        // resolve(result);
       });
     }
 }
